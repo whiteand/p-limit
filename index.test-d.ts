@@ -30,4 +30,5 @@ expectError(pLimit({concurrency: 1, rejectOnClear: 'nope'}));
 
 // LimitFunction.map accepts iterables
 expectType<Promise<string[]>>(limit.map(new Set(['a', 'b', 'c']), async x => x + x));
+expectType<Promise<string[]>>(limit.map({length: 1, '0': 'a'}, async x => x + x));
 expectType<Promise<number[]>>(limit.map([1, 2, 3].values(), async x => x * 2));

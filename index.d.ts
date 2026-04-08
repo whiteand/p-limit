@@ -38,7 +38,7 @@ export type LimitFunction = {
 	@returns A promise equivalent to `Promise.all(Array.from(iterable, (item, index) => limit(mapperFunction, item, index)))`.
 	*/
 	map: <Input, ReturnType> (
-		iterable: Iterable<Input>,
+		iterable: Iterable<Input> | ArrayLike<Input>,
 		mapperFunction: (input: Input, index: number) => PromiseLike<ReturnType> | ReturnType
 	) => Promise<ReturnType[]>;
 
