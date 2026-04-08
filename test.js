@@ -254,6 +254,16 @@ test('map accepts an iterable (array iterator)', async t => {
 	t.deepEqual(results, [2, 4, 6, 8]);
 });
 
+test('map accepts an array like', async t => {
+	const limit = pLimit(2);
+	const inputs = {length: 2, '0': 1, '1': 2}
+
+	const results = await limit.map(inputs, input => input * 2); // eslint-disable-line unicorn/no-array-method-this-argument
+
+	t.deepEqual(results, [2, 4]);
+});
+
+
 test('accepts options object', async t => {
 	const limit = pLimit({concurrency: 1});
 
